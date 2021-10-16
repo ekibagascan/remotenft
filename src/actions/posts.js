@@ -72,7 +72,7 @@ export const getPostsByTag = (tag) => async (dispatch) => {
     const {
       data: { data },
     } = await api.fetchPostsByTag(tag)
-    console.log(data)
+
     dispatch({ type: FETCH_BY_TAG, payload: { data } })
     dispatch({ type: END_LOADING })
   } catch (error) {
@@ -84,7 +84,7 @@ export const getPostsByCategory = (category) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING })
     const { data } = await api.fetchPostsByCategory(category)
-    console.log(data)
+
     dispatch({ type: FETCH_BY_CATEGORY, payload: data })
     dispatch({ type: END_LOADING })
   } catch (error) {

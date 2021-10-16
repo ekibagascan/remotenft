@@ -1,3 +1,4 @@
+import React from 'react'
 import { Container } from '@mui/material'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { styled } from '@mui/material/styles'
@@ -15,7 +16,7 @@ const MyContainer = styled(Container)(({ theme }) => ({
   },
 }))
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <MyContainer maxWidth='xl'>
@@ -23,7 +24,6 @@ function App() {
           <>
             <Header />
             <Route path='/' exact component={Home} />
-            <Route path='/remote-nft/:id' exact component={Home} />
             <Route
               path='/remote-nft/categories/:category'
               exact
@@ -36,11 +36,7 @@ function App() {
               exact
               component={PostJobDone}
             />
-            <Route
-              path='/remote-nft/category/:category'
-              exact
-              component={PostJobDone}
-            />
+
             <Footer />
           </>
         </Switch>
