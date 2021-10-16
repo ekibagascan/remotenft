@@ -1,7 +1,7 @@
 import React from 'react'
 import { Fab } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const PostJob = styled(Fab)(({ theme }) => ({
   position: 'fixed',
@@ -24,13 +24,17 @@ const PostJob = styled(Fab)(({ theme }) => ({
 }))
 
 const FloatingButton = () => {
+  const history = useHistory()
   return (
     <div>
-      <Link to='/remote-hire'>
-        <PostJob variant='extended' aria-label='postjob' size='small'>
-          Post Job
-        </PostJob>
-      </Link>
+      <PostJob
+        variant='extended'
+        aria-label='postjob'
+        size='small'
+        onClick={() => history.push('/remote-nft/postjob')}
+      >
+        Post Job
+      </PostJob>
     </div>
   )
 }

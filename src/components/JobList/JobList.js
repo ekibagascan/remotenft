@@ -52,9 +52,7 @@ const ChipRight = styled(Chip)(({ theme }) => ({
   },
 }))
 const ChipGrid = styled(Grid)(({ theme }) => ({
-  [theme.breakpoints.down('sm')]: {
-    // display: 'none',
-  },
+  [theme.breakpoints.down('sm')]: {},
 }))
 const MyGrid = styled(Grid)(({ theme }) => ({
   paddingBottom: 1,
@@ -98,7 +96,7 @@ const JobList = ({ posts }) => {
         alignitems='center'
         justifyContent='center'
         spacing={{ xs: 0, md: 1 }}
-        sx={{ margin: '20px 0px' }}
+        sx={{ margin: '30px 0px' }}
       >
         {posts?.map((post) =>
           post.isApproved ? (
