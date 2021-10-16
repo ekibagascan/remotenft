@@ -56,6 +56,12 @@ const MyPaper = styled(Paper)(({ theme }) => ({
   },
 }))
 
+const ChipRight = styled(Chip)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    display: 'none',
+  },
+}))
+
 const FormPreview = ({ postData }) => {
   const [expanded, setExpanded] = useState(false)
 
@@ -187,23 +193,22 @@ const FormPreview = ({ postData }) => {
                 marginRight: '80px',
               }}
             >
-              <Box>
-                <Chip
+              <ChipRight
+                variant='outlined'
+                label={postData?.category}
+                size='medium'
+                sx={{ margin: '3px' }}
+              />
+
+              {postData?.tags.map((tag) => (
+                <ChipRight
+                  key={tag}
+                  label={tag}
                   variant='outlined'
-                  label={postData?.category || 'Category'}
                   size='medium'
                   sx={{ margin: '3px' }}
                 />
-
-                {postData.tags.map((tag) => (
-                  <Button
-                    variant='outlined'
-                    label={tag}
-                    size='medium'
-                    sx={{ margin: '3px' }}
-                  />
-                ))}
-              </Box>
+              ))}
             </Grid>
           </Card>
         </CardActionArea>
