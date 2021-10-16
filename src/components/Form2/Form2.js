@@ -93,25 +93,29 @@ const Form2 = ({ postData, setPostData }) => {
           id='minSalaries'
           options={minSalaries}
           getOptionLabel={(option) => option.toString()}
-          getOptionSelected={(option, value) => option.salary === value.salary}
+          isOptionEqualToValue={(option, value) =>
+            option.minSalary === value.minSalary
+          }
           value={postData.minSalary}
           onChange={handleChangeminSalary}
           fullWidth
           style={{ marginRight: '16px' }}
           renderInput={(params) => (
-            <AutoField required {...params} shrink label='Minimum Salary' />
+            <AutoField required {...params} label='Minimum Salary' />
           )}
         />
         <Autocomplete
           id='maxSalaries'
           options={maxSalaries}
           getOptionLabel={(option) => option.toString()}
-          getOptionSelected={(option, value) => option.salary === value.salary}
+          isOptionEqualToValue={(option, value) =>
+            option.maxSalary === value.maxSalary
+          }
           value={postData.maxSalary}
           onChange={handleChangemaxSalary}
           fullWidth
           renderInput={(params) => (
-            <AutoField required {...params} shrink label='Maximum Salary' />
+            <AutoField required {...params} label='Maximum Salary' />
           )}
         />
       </Grid>
@@ -132,7 +136,6 @@ const Form2 = ({ postData, setPostData }) => {
       </Grid>
       <Grid>
         <InputField
-          shrink
           onClick={handleGetClick}
           disabled={getClick2}
           label='Apply URL Link'
@@ -149,7 +152,6 @@ const Form2 = ({ postData, setPostData }) => {
         </Typography>
 
         <InputField
-          shrink
           onClick={handleGetClick2}
           disabled={getClick}
           label='Apply Email'

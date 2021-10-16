@@ -7,49 +7,76 @@ import {
   Button,
   Link,
 } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import ReactMarkdown from 'react-markdown'
+
+const Content = styled(CardContent)(({ theme }) => ({
+  padding: '50px 80px',
+  [theme.breakpoints.down('sm')]: {
+    padding: '10px',
+  },
+}))
+const Title = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1rem',
+    marginBottom: '10px',
+  },
+}))
+const Descriptions = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.7rem',
+  },
+}))
+const Location = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.7rem',
+    fontWeight: 500,
+  },
+}))
+const SubTitle = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.8rem',
+  },
+}))
+const Salaries = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.8rem',
+    fontWeight: 500,
+  },
+}))
+
+const MyPaper = styled(Paper)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    margin: '0px auto 20px',
+  },
+}))
 
 const CollapseDetails = ({ expanded, currentId, post }) => {
   return (
     <Collapse in={expanded} timeout='auto' unmountOnExit>
-      <CardContent sx={{ padding: '50px 80px' }}>
-        <Typography variant='h4' sx={{ fontWeight: 500, marginBottom: '20px' }}>
+      <Content>
+        <Title variant='h4' sx={{ fontWeight: 500, marginBottom: '20px' }}>
           {post.name} is hiring a Remote {post.position}
-        </Typography>
-
-        <ReactMarkdown>{post?.jobDescriptions}</ReactMarkdown>
-        <Typography variant='h5' sx={{ fontWeight: 500, marginBottom: '10px' }}>
+        </Title>
+        <Descriptions>
+          <ReactMarkdown>{post?.jobDescriptions}</ReactMarkdown>
+        </Descriptions>
+        <SubTitle variant='h5' sx={{ fontWeight: 500, marginBottom: '10px' }}>
           Location
-        </Typography>
+        </SubTitle>
 
-        <Typography paragraph>{post.location}</Typography>
-        <Typography variant='h5' sx={{ fontWeight: 500, marginBottom: '10px' }}>
+        <Location paragraph>{post.location}</Location>
+        <SubTitle variant='h5' sx={{ fontWeight: 500, marginBottom: '10px' }}>
           Salary
-        </Typography>
-        <Button
-          size='small'
-          sx={{
-            backgroundColor: '#C6D57E',
-            height: '20px',
-            '&:hover': {
-              background: '#C6D57E',
-            },
-          }}
-        >
-          <Typography variant='body2' sx={{ color: '#000' }}>
-            {post.minSalary} - {post.maxSalary}
-          </Typography>
-        </Button>
-        <Typography paragraph sx={{ textAlign: 'center', margin: '30px auto' }}>
-          See more jobs at <strong>{post.name}</strong>
-        </Typography>
-        <Paper
+        </SubTitle>
+
+        <Salaries paragraph>
+          {post.minSalary} - {post.maxSalary}
+        </Salaries>
+
+        <MyPaper
           elevate={1}
-          sx={{
-            padding: 3,
-            textAlign: 'center',
-            margin: '0px auto 50px',
-          }}
+          sx={{ padding: 3, textAlign: 'center', margin: '0px auto 50px' }}
         >
           <Link
             href={post.applyUrl || post.applyEmail}
@@ -67,8 +94,8 @@ const CollapseDetails = ({ expanded, currentId, post }) => {
               Apply for this job
             </Button>
           </Link>
-        </Paper>
-      </CardContent>
+        </MyPaper>
+      </Content>
     </Collapse>
   )
 }

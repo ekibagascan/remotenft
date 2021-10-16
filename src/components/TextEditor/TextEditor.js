@@ -34,10 +34,6 @@ const TextEditor = ({ postData, setPostData }) => {
         }}
         onEditorStateChange={handleEditorChange}
       />
-      {/* <textarea
-          disabled
-           value={editorState && draftToMarkdown(convertToRaw(editorState.getCurrentContent()))}
-        /> */}
     </div>
   )
 }

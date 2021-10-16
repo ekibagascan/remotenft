@@ -1,5 +1,6 @@
 import { Container } from '@mui/material'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { styled } from '@mui/material/styles'
 
 import './App.css'
 import Header from './components/Header/Header'
@@ -8,10 +9,16 @@ import CreatePost from './screens/CreatePost'
 import PostJobDone from './screens/PostJobDone'
 import Footer from './components/Footer/Footer'
 
+const MyContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    padding: 0,
+  },
+}))
+
 function App() {
   return (
     <BrowserRouter>
-      <Container maxWidth='xl'>
+      <MyContainer maxWidth='xl'>
         <Switch>
           <>
             <Header />
@@ -37,7 +44,7 @@ function App() {
             <Footer />
           </>
         </Switch>
-      </Container>
+      </MyContainer>
     </BrowserRouter>
   )
 }

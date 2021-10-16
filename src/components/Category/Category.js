@@ -1,16 +1,14 @@
 import React from 'react'
-import { Grid, Button, Container } from '@mui/material'
+import { Grid, Button, Container, Typography } from '@mui/material'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import { getPostsByCategory } from '../../actions/posts'
 import stickers from '../categories'
 
-const Category = ({ categories }) => {
+const Category = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-
-  if (!categories) return 'nodata'
 
   const handleSearchCategory = (category) => {
     dispatch(getPostsByCategory(category))
@@ -21,23 +19,22 @@ const Category = ({ categories }) => {
     <Container maxWidth='lg'>
       <Grid container spacing={1} sx={{ marginTop: '20px' }}>
         <Grid item xs={12} sx={{ textAlign: 'center' }}>
+          <Typography variant='body2' color='white'>
+            Categories
+          </Typography>
           <Grid item sx={{ marginTop: '10px' }}>
-            {categories.map((category) =>
-              stickers.map((sticker) =>
-                category.name === sticker.name ? (
-                  <Button
-                    size='small'
-                    variant='outlined'
-                    sx={{ margin: 'auto 3px' }}
-                    key={category._id}
-                    onClick={() => handleSearchCategory(category.name)}
-                  >
-                    {sticker.sticker}
-                    {category.name}
-                  </Button>
-                ) : null
-              )
-            )}
+            {stickers.map((sticker) => (
+              <Button
+                size='small'
+                variant='outlined'
+                sx={{ margin: '3px' }}
+                key={sticker._id}
+                onClick={() => handleSearchCategory(sticker.name)}
+              >
+                {sticker.sticker}
+                {sticker.name}
+              </Button>
+            ))}
           </Grid>
         </Grid>
       </Grid>

@@ -13,6 +13,14 @@ const PostJob = styled(Fab)(({ theme }) => ({
   '&:hover': {
     background: 'linear-gradient(90deg, #92fe9d 0%, #00C9FF 100%)',
   },
+  [theme.breakpoints.down('sm')]: {
+    top: theme.spacing(2.3),
+    width: '50px',
+    height: '25px',
+    fontSize: '0.4rem',
+    fontWeight: 400,
+    borderRadius: '3px',
+  },
 }))
 
 const FloatingButton = () => {

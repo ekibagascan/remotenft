@@ -59,7 +59,7 @@ const Form1 = ({ postData, setPostData }) => {
     <Paper elevation={1} sx={{ padding: 2 }}>
       <InputField
         label='Company/Project Name'
-        required='true'
+        required
         value={postData.name}
         onChange={(e) => setPostData({ ...postData, name: e.target.value })}
         helperText='Your company or name of your project '
@@ -67,7 +67,7 @@ const Form1 = ({ postData, setPostData }) => {
       />
       <InputField
         label='POSITION'
-        required='true'
+        required
         value={postData.position}
         onChange={(e) => setPostData({ ...postData, position: e.target.value })}
         sx={{ margin: '8px auto', width: '100%' }}
@@ -77,6 +77,9 @@ const Form1 = ({ postData, setPostData }) => {
         id='primary-tag'
         options={categoriesJob}
         getOptionLabel={(option) => option.toString()}
+        isOptionEqualToValue={(option, value) =>
+          option.category === value.category
+        }
         value={postData.category}
         onChange={handleChangeCategory}
         fullWidth
@@ -85,7 +88,6 @@ const Form1 = ({ postData, setPostData }) => {
             sx={{ margin: '8px auto', width: '100%' }}
             required
             {...params}
-            shrink
             label='Category'
             helperText='This Category shows first and increases visibility in the main sections. Your job is shown on every page that is tagged with though. E.g. if you tag it as Designer, it shows for Remote Deigner Jobs etc.'
           />
@@ -97,9 +99,10 @@ const Form1 = ({ postData, setPostData }) => {
         id='tags'
         fullWidth
         options={tagLists}
-        Value={[...postData.tags]}
+        value={[...postData.tags]}
         onChange={handleAddTag}
-        getOptionLabel={(option) => option}
+        isOptionEqualToValue={(option, value) => option.tags === value.tags}
+        getOptionLabel={(option) => option.toString()}
         renderInput={(params) => (
           <AutoField
             sx={{ margin: '8px auto', width: '100%' }}

@@ -12,7 +12,49 @@ import {
   Typography,
   Collapse,
 } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import ReactMarkdown from 'react-markdown'
+
+const Content = styled(CardContent)(({ theme }) => ({
+  padding: '50px 80px',
+  [theme.breakpoints.down('sm')]: {
+    padding: '10px',
+  },
+}))
+const Title = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1rem',
+    marginBottom: '10px',
+  },
+}))
+const Descriptions = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.7rem',
+  },
+}))
+const Location = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.7rem',
+    fontWeight: 500,
+  },
+}))
+const SubTitle = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.8rem',
+  },
+}))
+const Salaries = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.8rem',
+    fontWeight: 500,
+  },
+}))
+
+const MyPaper = styled(Paper)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    margin: '0px auto 20px',
+  },
+}))
 
 const FormPreview = ({ postData }) => {
   const [expanded, setExpanded] = useState(false)
@@ -167,33 +209,36 @@ const FormPreview = ({ postData }) => {
         </CardActionArea>
         <Paper>
           <Collapse in={expanded} timeout='auto' unmountOnExit>
-            <CardContent sx={{ padding: '50px 80px' }}>
-              <Typography
+            <Content>
+              <Title
                 variant='h4'
                 sx={{ fontWeight: 500, marginBottom: '20px' }}
               >
-                {postData?.name || 'Company'} is hiring a Remote{' '}
-                {postData?.position || 'Position'}
-              </Typography>
-
-              <ReactMarkdown>{postData?.jobDescriptions}</ReactMarkdown>
-
-              <Typography
-                variant='body1'
+                {postData?.name} is hiring a Remote {postData?.position}
+              </Title>
+              <Descriptions>
+                <ReactMarkdown>{postData?.jobDescriptions}</ReactMarkdown>
+              </Descriptions>
+              <SubTitle
+                variant='h5'
                 sx={{ fontWeight: 500, marginBottom: '10px' }}
               >
                 Location
-              </Typography>
-              <Typography paragraph>
-                {postData?.location || 'Location'}
-              </Typography>
-              <Typography
-                paragraph
-                sx={{ textAlign: 'center', margin: '30px auto' }}
+              </SubTitle>
+
+              <Location paragraph>{postData?.location}</Location>
+              <SubTitle
+                variant='h5'
+                sx={{ fontWeight: 500, marginBottom: '10px' }}
               >
-                See more jobs at <strong>{postData?.name || 'Company'}</strong>
-              </Typography>
-              <Paper
+                Salary
+              </SubTitle>
+
+              <Salaries paragraph>
+                {postData?.minSalary} - {postData?.maxSalary}
+              </Salaries>
+
+              <MyPaper
                 elevate={1}
                 sx={{
                   padding: 3,
@@ -204,12 +249,13 @@ const FormPreview = ({ postData }) => {
                 <Button
                   variant='contained'
                   fullWidth
+                  color='primary'
                   sx={{ borderRadius: '15px', backgroundColor: '#0F00FF' }}
                 >
                   Apply for this job
                 </Button>
-              </Paper>
-            </CardContent>
+              </MyPaper>
+            </Content>
           </Collapse>
         </Paper>
       </Paper>

@@ -1,8 +1,5 @@
 const tagLists = [
-  'NFT',
   'Design',
-  'Marketing',
-  'Community',
   'Corel',
   'Figma',
   'Blender',

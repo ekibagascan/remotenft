@@ -37,7 +37,7 @@ const CreatePost = () => {
 
   return (
     <Grow in>
-      <Container maxWidth='md'>
+      <Container maxWidth='md' sx={{ marginTop: '30px' }}>
         <Grid
           container
           justifyContent='space-between'

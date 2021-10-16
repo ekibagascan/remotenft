@@ -27,7 +27,7 @@ const MyCard = styled(Card)(({ theme }) => ({
 const Media = styled(CardMedia)(({ theme }) => ({
   maxWidth: 106,
   [theme.breakpoints.down('sm')]: {
-    maxWidth: 70,
+    maxWidth: 90,
   },
 }))
 const Name = styled(Typography)(({ theme }) => ({
@@ -56,6 +56,18 @@ const ChipGrid = styled(Grid)(({ theme }) => ({
     // display: 'none',
   },
 }))
+const MyGrid = styled(Grid)(({ theme }) => ({
+  paddingBottom: 1,
+  paddingRight: 1,
+  [theme.breakpoints.down('sm')]: {
+    padding: 0,
+  },
+}))
+const MyContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    padding: 0,
+  },
+}))
 
 const JobList = ({ posts }) => {
   const history = useHistory()
@@ -80,22 +92,17 @@ const JobList = ({ posts }) => {
   if (!posts) return 'nopost'
 
   return (
-    <Container maxWidth='md'>
+    <MyContainer maxWidth='md'>
       <Grid
         container
-        alignItems='stretch'
+        alignitems='center'
         justifyContent='center'
-        spacing={1}
-        sx={{ margin: '20px auto' }}
+        spacing={{ xs: 0, md: 1 }}
+        sx={{ margin: '20px 0px' }}
       >
         {posts?.map((post) =>
           post.isApproved ? (
-            <Grid
-              key={post?._id}
-              item
-              xs={12}
-              sx={{ paddingBottom: 1, paddingRight: 2 }}
-            >
+            <MyGrid key={post?._id} item xs={12}>
               <CardActionArea>
                 <MyCard
                   sx={{ display: 'flex' }}
@@ -193,11 +200,11 @@ const JobList = ({ posts }) => {
                   />
                 </Paper>
               ) : null}
-            </Grid>
+            </MyGrid>
           ) : null
         )}
       </Grid>
-    </Container>
+    </MyContainer>
   )
 }
 
