@@ -101,12 +101,12 @@ const FormPreview = ({ postData }) => {
             <CardMedia
               component='img'
               sx={{
-                maxWidth: 106,
+                maxWidth: 100,
                 padding: 1,
                 borderRadius: '12px',
                 objectFit: 'cover',
               }}
-              image={postData?.logo || 'images/nftjobs.webp'}
+              image={postData?.logo || '/images/remotenft.png'}
               alt='logo-preview'
             />
 

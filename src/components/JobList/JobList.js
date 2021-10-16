@@ -25,7 +25,7 @@ const MyCard = styled(Card)(({ theme }) => ({
 }))
 
 const Media = styled(CardMedia)(({ theme }) => ({
-  maxWidth: 106,
+  maxWidth: 100,
   [theme.breakpoints.down('sm')]: {
     maxWidth: 90,
   },
@@ -96,11 +96,11 @@ const JobList = ({ posts }) => {
         alignitems='center'
         justifyContent='center'
         spacing={{ xs: 0, md: 1 }}
-        sx={{ margin: '30px 0px' }}
+        sx={{ margin: '20px 0px' }}
       >
         {posts?.map((post) =>
           post.isApproved ? (
-            <MyGrid key={post?._id} item xs={12}>
+            <MyGrid key={post?._id} item xs={12} sx={{ marginTop: '10px' }}>
               <CardActionArea>
                 <MyCard
                   sx={{ display: 'flex' }}
