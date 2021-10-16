@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 'http://localhost:5000/' })
+const API = axios.create({ baseURL: 'https://remote-nft.herokuapp.com/' })
 
 export const fetchCategories = () => API.get(`/api/category`)
 export const fetchCategory = (name) => API.get(`/api/category/${name}`)
