@@ -140,23 +140,25 @@ const JobList = ({ posts }) => {
                         size='small'
                         sx={{ margin: 'auto 3px' }}
                       />
-                      <Chip
-                        variant='contained'
-                        size='small'
-                        label={post?.maxSalary}
-                        sx={{
-                          margin: 'auto 3px',
-                          backgroundColor: '#C6D57E',
-                          fontSize: '0.65rem',
-                          height: '24px',
-                          boxShadow: 'none',
-                          borderRadius: '15px',
-                          '&:hover': {
+                      {post?.minSalary || post.maxSalary !== 'Secret' ? (
+                        <Chip
+                          variant='contained'
+                          size='small'
+                          label={post?.maxSalary}
+                          sx={{
+                            margin: 'auto 3px',
                             backgroundColor: '#C6D57E',
+                            fontSize: '0.65rem',
+                            height: '24px',
                             boxShadow: 'none',
-                          },
-                        }}
-                      />
+                            borderRadius: '15px',
+                            '&:hover': {
+                              backgroundColor: '#C6D57E',
+                              boxShadow: 'none',
+                            },
+                          }}
+                        />
+                      ) : null}
                     </Grid>
                   </CardContent>
                   <ChipGrid

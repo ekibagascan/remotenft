@@ -1,6 +1,5 @@
 const minSalaries = [
-  'Minimum Per Year',
-  '$0',
+  'Secret',
   '$10K ',
   '$20K ',
   '$30K ',
@@ -39,7 +38,6 @@ const minSalaries = [
   '$390K ',
   '$400K ',
   '$500K',
-  'Minimum Profit',
   '5% profit',
   '10% profit',
   '20% profit',
@@ -53,8 +51,7 @@ const minSalaries = [
   '100% profit',
 ]
 const maxSalaries = [
-  'Maximum Per Year',
-  ' $0',
+  'Secret',
   ' $10K ',
   ' $20K ',
   ' $30K ',
@@ -93,7 +90,6 @@ const maxSalaries = [
   '$390K',
   '$400K',
   '$500K',
-  'Maximum Profit',
   '5% profit',
   '10% profit',
   '20% profit',

@@ -125,24 +125,25 @@ const FormPreview = ({ postData }) => {
                     },
                   }}
                 />
-
-                <Chip
-                  variant='contained'
-                  size='small'
-                  label={postData?.maxSalary || '$'}
-                  sx={{
-                    margin: 'auto 3px',
-                    backgroundColor: '#66BB6A',
-                    fontSize: '0.65rem',
-                    height: '24px',
-                    boxShadow: 'none',
-                    borderRadius: '5px',
-                    '&:hover': {
+                {postData?.minSalary || postData?.maxSalary !== 'Secret' ? (
+                  <Chip
+                    variant='contained'
+                    size='small'
+                    label={postData?.maxSalary || '$'}
+                    sx={{
+                      margin: 'auto 3px',
                       backgroundColor: '#66BB6A',
+                      fontSize: '0.65rem',
+                      height: '24px',
                       boxShadow: 'none',
-                    },
-                  }}
-                />
+                      borderRadius: '5px',
+                      '&:hover': {
+                        backgroundColor: '#66BB6A',
+                        boxShadow: 'none',
+                      },
+                    }}
+                  />
+                ) : null}
               </Grid>
             </CardContent>
             <Grid

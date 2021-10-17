@@ -6,6 +6,7 @@ import {
   Paper,
   Button,
   Link,
+  Grid,
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import ReactMarkdown from 'react-markdown'
@@ -66,13 +67,21 @@ const CollapseDetails = ({ expanded, currentId, post }) => {
         </SubTitle>
 
         <Location paragraph>{post.location}</Location>
-        <SubTitle variant='h5' sx={{ fontWeight: 500, marginBottom: '10px' }}>
-          Salary
-        </SubTitle>
 
-        <Salaries paragraph>
-          {post.minSalary} - {post.maxSalary}
-        </Salaries>
+        {post?.minSalary || post.maxSalary !== 'Secret' ? (
+          <Grid>
+            <SubTitle
+              variant='h5'
+              sx={{ fontWeight: 500, marginBottom: '10px' }}
+            >
+              Salary
+            </SubTitle>
+
+            <Salaries paragraph>
+              {post.minSalary} - {post.maxSalary}
+            </Salaries>
+          </Grid>
+        ) : null}
 
         <MyPaper
           elevate={1}
