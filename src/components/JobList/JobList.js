@@ -140,7 +140,7 @@ const JobList = ({ posts }) => {
                         size='small'
                         sx={{ margin: 'auto 3px' }}
                       />
-                      {post?.minSalary || post.maxSalary !== 'Secret' ? (
+                      {post?.maxSalary === 'Secret' ? null : (
                         <Chip
                           variant='contained'
                           size='small'
@@ -158,7 +158,7 @@ const JobList = ({ posts }) => {
                             },
                           }}
                         />
-                      ) : null}
+                      )}
                     </Grid>
                   </CardContent>
                   <ChipGrid

@@ -125,7 +125,7 @@ const FormPreview = ({ postData }) => {
                     },
                   }}
                 />
-                {postData?.minSalary || postData?.maxSalary !== 'Secret' ? (
+                {postData?.minSalary && postData?.maxSalary !== 'Secret' ? (
                   <Chip
                     variant='contained'
                     size='small'

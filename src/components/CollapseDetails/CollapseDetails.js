@@ -68,7 +68,7 @@ const CollapseDetails = ({ expanded, currentId, post }) => {
 
         <Location paragraph>{post.location}</Location>
 
-        {post?.minSalary || post.maxSalary !== 'Secret' ? (
+        {post?.minSalary && post.maxSalary !== 'Secret' ? (
           <Grid>
             <SubTitle
               variant='h5'
