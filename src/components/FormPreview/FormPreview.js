@@ -27,7 +27,7 @@ const Title = styled(Typography)(({ theme }) => ({
     marginBottom: '10px',
   },
 }))
-const Descriptions = styled(Typography)(({ theme }) => ({
+const Descriptions = styled(ReactMarkdown)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     fontSize: '0.7rem',
   },
@@ -221,9 +221,9 @@ const FormPreview = ({ postData }) => {
               >
                 {postData?.name} is hiring a Remote {postData?.position}
               </Title>
-              <Descriptions>
-                <ReactMarkdown>{postData?.jobDescriptions}</ReactMarkdown>
-              </Descriptions>
+
+              <Descriptions>{postData?.jobDescriptions}</Descriptions>
+
               <SubTitle
                 variant='h5'
                 sx={{ fontWeight: 500, marginBottom: '10px' }}

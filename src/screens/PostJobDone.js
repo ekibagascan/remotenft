@@ -7,12 +7,42 @@ import {
   ImageListItem,
   Typography,
 } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import { Link } from 'react-router-dom'
+
+const MyPaper = styled(Paper)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    padding: 2,
+    margin: '30px auto',
+  },
+}))
+const MyImage = styled(ImageListItem)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    width: '100px',
+    margin: '15px auto',
+  },
+}))
+const Title = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1rem',
+    marginBottom: '10px',
+  },
+}))
+const Subtitle = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.8rem',
+  },
+}))
+const Back = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.7rem',
+  },
+}))
 
 const PostJobDone = () => {
   return (
     <Grow in>
-      <Container maxWidth='xl'>
+      <Container maxWidth='lg'>
         <Grid
           container
           justifyContent='space-between'
@@ -32,24 +62,27 @@ const PostJobDone = () => {
               flexDirection: 'column',
             }}
           >
-            <Paper elevation={2} sx={{ padding: 4, margin: '60px 200px' }}>
-              <ImageListItem sx={{ width: '200px', margin: '20px auto' }}>
+            <MyPaper
+              elevation={2}
+              sx={{ padding: 4, margin: '60px 200px 0px' }}
+            >
+              <MyImage sx={{ width: '200px', margin: '20px auto' }}>
                 <img
                   alt='successfull'
                   src='/images/checklist.svg'
                   loading='lazy'
                 />
-              </ImageListItem>
-              <Typography variant='h4'>All done!</Typography>
-              <Typography variant='h6'>
-                We will review your post and post it for you🧐
-              </Typography>
+              </MyImage>
+              <Title variant='h4'>All done!</Title>
+              <Subtitle variant='body1'>
+                We will review your post and post it fastly🧐
+              </Subtitle>
               <Link to={`/`}>
-                <Typography variant='body1' sx={{ marginBottom: '30px' }}>
+                <Back variant='body1' sx={{ marginBottom: '30px' }}>
                   Go Home
-                </Typography>
+                </Back>
               </Link>
-            </Paper>
+            </MyPaper>
           </Grid>
         </Grid>
       </Container>

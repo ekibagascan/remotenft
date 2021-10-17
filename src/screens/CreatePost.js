@@ -40,7 +40,7 @@ const CreatePost = () => {
       <Container maxWidth='md' sx={{ marginTop: '30px' }}>
         <Grid
           container
-          justifyContent='space-between'
+          justifyContent='center'
           aligntitems='center'
           spacing={2}
           sx={{
@@ -53,14 +53,14 @@ const CreatePost = () => {
               <Form2 postData={postData} setPostData={setPostData} />
             </form>
 
-            <FormPreview postData={postData} />
-            <Box
-              sx={{
-                height: 250,
-                width: 835,
-              }}
-            />
             <Hidden lgDown>
+              <FormPreview postData={postData} />
+              <Box
+                sx={{
+                  height: 250,
+                  width: 835,
+                }}
+              />
               <FormPreview1 postData={postData} />
             </Hidden>
           </Grid>

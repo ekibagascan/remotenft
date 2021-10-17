@@ -22,7 +22,12 @@ const Title = styled(Typography)(({ theme }) => ({
     marginBottom: '10px',
   },
 }))
-const Descriptions = styled(Typography)(({ theme }) => ({
+const SubTitle = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.8rem',
+  },
+}))
+const Descriptions = styled(ReactMarkdown)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     fontSize: '0.7rem',
   },
@@ -31,11 +36,6 @@ const Location = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     fontSize: '0.7rem',
     fontWeight: 500,
-  },
-}))
-const SubTitle = styled(Typography)(({ theme }) => ({
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '0.8rem',
   },
 }))
 const Salaries = styled(Typography)(({ theme }) => ({
@@ -58,9 +58,9 @@ const CollapseDetails = ({ expanded, currentId, post }) => {
         <Title variant='h4' sx={{ fontWeight: 500, marginBottom: '20px' }}>
           {post.name} is hiring a Remote {post.position}
         </Title>
-        <Descriptions>
-          <ReactMarkdown>{post?.jobDescriptions}</ReactMarkdown>
-        </Descriptions>
+
+        <Descriptions>{post?.jobDescriptions}</Descriptions>
+
         <SubTitle variant='h5' sx={{ fontWeight: 500, marginBottom: '10px' }}>
           Location
         </SubTitle>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import {
   Grid,
-  Button,
   Chip,
   Paper,
   CardActionArea,
@@ -11,6 +10,14 @@ import {
   Box,
   Typography,
 } from '@mui/material'
+import { styled } from '@mui/material/styles'
+
+const ChipRight = styled(Chip)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    display: 'none',
+  },
+}))
+
 const FormPreview = ({ postData }) => {
   const [expanded, setExpanded] = useState(false)
 
@@ -147,18 +154,21 @@ const FormPreview = ({ postData }) => {
               }}
             >
               <Box>
-                <Button variant='outlined' size='small' sx={{ margin: '3px' }}>
-                  {postData?.category || 'Category'}
-                </Button>
+                <ChipRight
+                  variant='outlined'
+                  label={postData?.category}
+                  size='medium'
+                  sx={{ margin: '3px' }}
+                />
 
-                {postData.tags.map((tag) => (
-                  <Button
+                {postData?.tags.map((tag) => (
+                  <ChipRight
+                    key={tag}
+                    label={tag}
                     variant='outlined'
-                    size='small'
+                    size='medium'
                     sx={{ margin: '3px' }}
-                  >
-                    {tag}
-                  </Button>
+                  />
                 ))}
               </Box>
             </Grid>

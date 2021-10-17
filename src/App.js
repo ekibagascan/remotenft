@@ -30,13 +30,13 @@ const App = () => {
               component={Home}
             />
             <Route path='/remote-nft/tags/:tag' exact component={Home} />
+
             <Route path='/remote-nft/postjob' exact component={CreatePost} />
             <Route
               path='/remote-nft/postjob/:id'
               exact
               component={PostJobDone}
             />
-
             <Footer />
           </>
         </Switch>

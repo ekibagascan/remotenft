@@ -52,7 +52,7 @@ const Form1 = ({ postData, setPostData }) => {
     setPostData({ ...postData, category: value })
 
   const handleAddTag = (event, values) => {
-    setPostData({ ...postData, tags: values }, () => {})
+    setPostData({ ...postData, tags: values })
   }
 
   return (
@@ -101,8 +101,8 @@ const Form1 = ({ postData, setPostData }) => {
         options={tagLists}
         value={[...postData.tags]}
         onChange={handleAddTag}
-        isOptionEqualToValue={(option, value) => option.tags === value.tags}
-        getOptionLabel={(option) => option.toString()}
+        isOptionEqualToValue={(option, value) => option === value}
+        getOptionLabel={(option) => option}
         renderInput={(params) => (
           <AutoField
             sx={{ margin: '8px auto', width: '100%' }}
